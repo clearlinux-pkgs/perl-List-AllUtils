@@ -4,7 +4,7 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.09
-Release  : 7
+Release  : 8
 URL      : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.09.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.09.tar.gz
 Summary  : 'Combines List::Util and List::MoreUtils in one bite-sized package'
