@@ -1,3 +1,26 @@
+0.14    2017-02-07
+
+- Re-release after git pull of some changes.
+
+
+0.13    2017-02-07
+
+- The docs for the subs from List::UtilsBy were repeated twice. Reported by
+  Andy Lester. RT #120123.
+
+
+0.12    2016-10-16
+
+- Nothing from List::UtilsBy was actually being exported, because of a typo
+  and a lack of testing. Reported by Greg Oschwald. GitHub #5.
+
+
+0.11    2016-06-26
+
+- Added List::UtilsBy to the list of included modules. Based on a patch from
+  Yanick Champoux. GH #3.
+
+
 0.10    2016-05-08
 
 - Switched from List::MoreUtils to List::SomeUtils. This should not change any
