@@ -4,7 +4,7 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.14
-Release  : 12
+Release  : 13
 URL      : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
@@ -13,8 +13,10 @@ License  : Artistic-2.0
 Requires: perl-List-AllUtils-doc
 BuildRequires : perl(Exporter::Tiny)
 BuildRequires : perl(List::SomeUtils)
-BuildRequires : perl(List::Util)
 BuildRequires : perl(List::UtilsBy)
+BuildRequires : perl(Module::Implementation)
+BuildRequires : perl(Module::Runtime)
+BuildRequires : perl(Try::Tiny)
 
 %description
 # NAME
@@ -32,6 +34,9 @@ doc components for the perl-List-AllUtils package.
 %setup -q -n List-AllUtils-0.14
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
@@ -45,7 +50,7 @@ fi
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test || :
 
 %install
@@ -62,7 +67,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/List/AllUtils.pm
+/usr/lib/perl5/site_perl/5.26.0/List/AllUtils.pm
 
 %files doc
 %defattr(-,root,root,-)
