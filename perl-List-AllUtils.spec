@@ -4,7 +4,7 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.14
-Release  : 13
+Release  : 14
 URL      : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
@@ -67,7 +67,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/List/AllUtils.pm
+/usr/lib/perl5/site_perl/5.26.1/List/AllUtils.pm
 
 %files doc
 %defattr(-,root,root,-)
