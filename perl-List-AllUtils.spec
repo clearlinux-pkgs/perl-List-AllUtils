@@ -4,7 +4,7 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.14
-Release  : 15
+Release  : 16
 URL      : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/List-AllUtils-0.14.tar.gz
 Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
