@@ -4,13 +4,14 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.15
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.15.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.15.tar.gz
 Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-List-AllUtils-license = %{version}-%{release}
+Requires: perl-List-AllUtils-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Exporter::Tiny)
 BuildRequires : perl(List::SomeUtils)
@@ -27,6 +28,7 @@ List::AllUtils - Combines List::Util, List::SomeUtils and List::UtilsBy in one b
 Summary: dev components for the perl-List-AllUtils package.
 Group: Development
 Provides: perl-List-AllUtils-devel = %{version}-%{release}
+Requires: perl-List-AllUtils = %{version}-%{release}
 
 %description dev
 dev components for the perl-List-AllUtils package.
@@ -40,14 +42,24 @@ Group: Default
 license components for the perl-List-AllUtils package.
 
 
+%package perl
+Summary: perl components for the perl-List-AllUtils package.
+Group: Default
+Requires: perl-List-AllUtils = %{version}-%{release}
+
+%description perl
+perl components for the perl-List-AllUtils package.
+
+
 %prep
 %setup -q -n List-AllUtils-0.15
+cd %{_builddir}/List-AllUtils-0.15
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -57,7 +69,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -66,7 +78,7 @@ make TEST_VERBOSE=1 test || :
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-List-AllUtils
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-List-AllUtils/LICENSE
+cp %{_builddir}/List-AllUtils-0.15/LICENSE %{buildroot}/usr/share/package-licenses/perl-List-AllUtils/2ac173c5950e0dbe7cbd352f57cc6eadffa39e71
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -79,7 +91,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/List/AllUtils.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -87,4 +98,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-List-AllUtils/LICENSE
+/usr/share/package-licenses/perl-List-AllUtils/2ac173c5950e0dbe7cbd352f57cc6eadffa39e71
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/List/AllUtils.pm
