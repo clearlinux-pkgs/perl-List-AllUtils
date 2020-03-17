@@ -4,12 +4,13 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.16
-Release  : 28
+Release  : 29
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.16.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.16.tar.gz
-Summary  : Perl package that combines List::Util and List::MoreUtils in one bite-sized package
+Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
 Group    : Development/Tools
 License  : Artistic-2.0
+Requires: perl-List-AllUtils-license = %{version}-%{release}
 Requires: perl-List-AllUtils-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Exporter::Tiny)
@@ -27,10 +28,17 @@ Summary: dev components for the perl-List-AllUtils package.
 Group: Development
 Provides: perl-List-AllUtils-devel = %{version}-%{release}
 Requires: perl-List-AllUtils = %{version}-%{release}
-Requires: perl-List-AllUtils = %{version}-%{release}
 
 %description dev
 dev components for the perl-List-AllUtils package.
+
+
+%package license
+Summary: license components for the perl-List-AllUtils package.
+Group: Default
+
+%description license
+license components for the perl-List-AllUtils package.
 
 
 %package perl
@@ -68,6 +76,8 @@ make TEST_VERBOSE=1 test || :
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-List-AllUtils
+cp %{_builddir}/List-AllUtils-0.16/LICENSE %{buildroot}/usr/share/package-licenses/perl-List-AllUtils/5586816d65cedc4c52fb3e6704d529fb9535d8fe
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -85,6 +95,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/List::AllUtils.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-List-AllUtils/5586816d65cedc4c52fb3e6704d529fb9535d8fe
+
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/List/AllUtils.pm
+/usr/lib/perl5/vendor_perl/5.30.2/List/AllUtils.pm
