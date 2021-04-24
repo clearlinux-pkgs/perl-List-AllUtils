@@ -1,5 +1,4 @@
-0.18
+0.19
 perl(List::SomeUtils)
+perl(List::Util)
 perl(List::UtilsBy)
-perl(Module::Implementation)
-perl(Try::Tiny)
