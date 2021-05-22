@@ -4,7 +4,7 @@
 #
 Name     : perl-List-AllUtils
 Version  : 0.19
-Release  : 37
+Release  : 38
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.19.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/List-AllUtils-0.19.tar.gz
 Summary  : 'Combines List::Util, List::SomeUtils and List::UtilsBy in one bite-sized package'
@@ -18,6 +18,7 @@ BuildRequires : perl(Exporter::Tiny)
 BuildRequires : perl(List::SomeUtils)
 BuildRequires : perl(List::Util)
 BuildRequires : perl(List::UtilsBy)
+BuildRequires : perl-List-Util
 
 %description
 # NAME
